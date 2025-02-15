@@ -82,9 +82,9 @@ def revenue_report(request):
     paid_orders = Order.objects.filter(status='paid')
     total_revenue = sum(order.total_price for order in paid_orders)
 
-    # Calculate revenue for the current shift (e.g., last 8 hours)
-    current_time = localtime(now())  # Get local time
-    shift_start = current_time - timedelta(hours=8)  # Define a shift (last 8 hours)
+
+    current_time = localtime(now())
+    shift_start = current_time - timedelta(hours=8)
     shift_orders = paid_orders.filter(created_at__gte=shift_start)
     shift_revenue = sum(order.total_price for order in shift_orders)
     return render(request, 'orders/revenue_report.html', {
