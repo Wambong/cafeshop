@@ -1,0 +1,24 @@
+{% extends 'orders/base.html' %}
+
+{% block content %}
+
+  <div class="card-header text-center">
+     <h1>Обновление статуса заказа {{ order.id }}</h1>
+  </div>
+ <div class="card-header text-center">
+    <form method="post">
+        {% csrf_token %}
+         <div class="card-body d-flex justify-content-between">
+            <select name="status">
+                <option value="pending">в ожидании</option>
+                <option value="ready">готово</option>
+                <option value="paid">оплачено</option>
+            </select>
+            <button type="submit" class="btn btn-primary">обновить</button>
+         </div>
+    </form>
+</div>
+ <div class="card-header text-center">
+            <a href="{% url 'order_list' %}">вернуться к заказам</a>
+ </div>
+{% endblock %}

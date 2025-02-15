@@ -1,0 +1,19 @@
+{% extends 'orders/base.html' %}
+
+{% block content %}
+
+<div class="card text-center">
+  <div class="card-header">
+    Revenue
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Отчет о доходах</h5>
+    <p class="card-text">Общий доход: ₽ {{ total_revenue }}</p>
+    <p class="card-text">Расчет выручки за смену: ₽ {{ shift_revenue }}</p>
+    <a href="{% url 'order_list' %}" class="btn btn-primary">вернуться к заказам</a>
+  </div>
+  <div class="card-footer text-body-secondary">
+   <i>I</i>Cafe
+  </div>
+</div>
+{% endblock %}

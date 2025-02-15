@@ -1,0 +1,39 @@
+{% extends 'orders/base.html' %}
+
+{% block content %}
+
+  <div class="card-header text-center">
+     <h1>  Добро пожаловать в наше iCafe</h1>
+  </div>
+  <div class="card-header text-center">
+        <h2>Доступные продукты</h2>
+</div>
+<div class="container">
+    <div class="row">
+        {% for item in items %}
+            <div class="col-md-3 mb-3">
+                <div class="card" style="">
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.name }}" style="max-height: 150px; object-fit: cover;">
+                    {% else %}
+                        No image available
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+
+                    </div>
+                    <div class="card-body d-flex justify-content-between">
+                        <a href="#" class="card-link">₽ {{ item.price }}</a>
+                        <a href="{% url 'edit_item' item.id %}" class="card-link">Редактировать</a>
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:4 %}
+                </div><div class="row">
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

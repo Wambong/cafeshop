@@ -1,0 +1,67 @@
+
+{% extends 'orders/base.html' %}
+
+{% block content %}
+
+  <div class="card-header text-center">
+        <h1>Заказы</h1>
+</div>
+<br>
+<form method="get" action="{% url 'search_orders' %}" class="d-flex mb-3">
+    <input type="text" name="query" class="form-control me-2" placeholder="Поиск по номеру стол или статусу">
+    <select name="status" class="form-select me-2">
+        <option value="">Filter by Status</option>
+        <option value="pending">в ожидании</option>
+        <option value="ready">готово</option>
+        <option value="paid">оплачено</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Поиск</button>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>номеру стол</th>
+            <th>продукты</th>
+            <th>общая стоимость</th>
+            <th>Статус</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.table_number }}</td>
+            <td>
+                <ul class="list-unstyled">
+                    {% for item in order.items.all %}
+                    <li>
+                        {% if item.image %}
+                            <img src="{{ item.image.url }}" alt="{{ item.name }}" width="50" class="img-fluid">
+                        {% endif %}
+                        {{ item.name }} - ₽ {{ item.price }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>₽ {{ order.total_price }}</td>
+            <td style="background-color: {% if order.status == 'pending' %}red{% elif order.status == 'ready' %}green{% elif order.status == 'paid' %}skyblue{% else %}white{% endif %};">
+                {{ order.status }}
+            </td>
+
+
+            <td>
+                <a href="{% url 'update_status' order.id %}" class="btn btn-warning btn-sm">Статус обновления</a>
+                <a href="{% url 'delete_order' order.id %}" class="btn btn-danger btn-sm">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+  <div class="card-header text-center">
+        <a href="{% url 'add_order' %}" class="btn btn-primary">Вернемся к оформлению заказа</a>
+</div>
+
+{% endblock %}

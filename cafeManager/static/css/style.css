@@ -1,0 +1,218 @@
+/* Global Styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f8f4f1;
+    color: #2c1810;
+    line-height: 1.6;
+
+        /* Add background image */
+    background-image: url('/static/images/background2.jpg'); /* Update the path as per your image location */
+    background-size: cover;  /* Ensures the image covers the entire background */
+    background-position: center;  /* Centers the image */
+    background-repeat: no-repeat;  /* Prevents repetition */
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #AB886D !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    color: #e6d5c3 !important;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #e6d5c3 !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #bf9d7e !important;
+}
+
+.navbar-toggler {
+    border-color: #e6d5c3;
+}
+
+
+/* Container Styling */
+.container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.form-control {
+    border: 2px solid #e6d5c3;
+    border-radius: 4px;
+    padding: 8px 12px;
+}
+
+.form-control:focus {
+    border-color: #2c1810;
+    box-shadow: 0 0 0 0.2rem rgba(44, 24, 16, 0.25);
+}
+
+/* Button Styling */
+.btn {
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+
+
+.btn-primary:hover {
+    background-color: #3d241b;
+    border-color: #3d241b;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th {
+    background-color: #2c1810;
+    color: #e6d5c3;
+    padding: 12px;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #e6d5c3;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+}
+
+
+.card-header {
+    background-color: #D6C0B3;
+
+}
+
+.card-body {
+    padding: 20px;
+    background-color: #D6C0B3;
+}
+
+
+footer {
+    background-color: #DFD3C3;
+    color: #e6d5c3;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #bf9d7e;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #e6d5c3;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .navbar-nav {
+        padding: 10px 0;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
+
+/* Alert Messages */
+.alert {
+    border-radius: 4px;
+    margin-bottom: 20px;
+    padding: 12px 20px;
+}
+
+/* Custom Classes */
+.text-coffee {
+    color: #2c1810;
+}
+
+.bg-coffee {
+    background-color: #2c1810;
+}
+
+.text-cream {
+    color: #e6d5c3;
+}
+
+.bg-cream {
+    background-color: #e6d5c3;
+}
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 50%; /* Makes it round */
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    background-color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+/* When checked, show a blue background with a checkmark */
+input[type="checkbox"]:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Create the checkmark */
+input[type="checkbox"]::before {
+    content: '✔';
+    font-size: 16px;
+    color: white;
+    display: none;
+    position: absolute;
+    top: 2px;
+    left: 5px;
+}
+
+/* Show the checkmark when checked */
+input[type="checkbox"]:checked::before {
+    display: block;
+}
